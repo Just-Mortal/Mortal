@@ -1,0 +1,12 @@
+Submit: 
+- Jupyter Notebook, Experiment X_Homework.ipynb;
+- Experimental Report Experiment X_Report.docx.
+• Title of your email: Name-Student Number-Experiment X
+• Email your experimental materials to:
+2210433032@email.szu.edu.cn
+
+
+code:
+1. Code indentation
+2. Meaningful naming
+3. Comments that add context

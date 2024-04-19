@@ -1,0 +1,127 @@
+掷骰子模拟：
+随机性原理：本实验部分旨在模拟掷骰子的结果，骰子的每次投掷都具有随机性。这种随机性可以通过伪随机数生成器来模拟，其中伪随机数的生成基于一个种子值，以确保可复现性。
+概率分布：每次骰子投掷的结果是一个离散的随机事件，其概率分布是均匀的，每个面出现的概率都是1/6。这是因为一个公平的六面骰子的每个面都有相等的机会出现。
+条件概率与贝叶斯定理：
+
+条件概率原理：条件概率是指在给定某一事件发生的条件下，另一事件发生的概率。在这里，我们考虑从两个袋子（Urn A 和 Urn B）中选择球的条件概率。条件概率的计算使用了已知信息来推断事件的概率。
+贝叶斯定理：贝叶斯定理是用于计算条件概率的重要工具。它描述了在已知一些信息的情况下，如何计算事件的条件概率。在这个实验部分，贝叶斯定理用于计算从袋子 A 中选择一个球的条件概率，已知球是白色。
+
+数学分数的条件概率分析：
+数据分析原理：在这一部分，我们利用实际学生的数学分数数据集进行分析。我们关注了两个属性：学生的数学分数（G3）和他们的学习时间（studytime）。我们使用数据集来估计不同学习时间段内获得高分（大于等于15分）的概率。
+概率估计：我们通过数据集中的统计信息来估计各种概率，如学生学习时间分布、获得高分的概率、以及在不同学习时间段内获得高分的概率。这有助于我们理解学生的学习习惯与成绩之间的关系。
+
+Dice Rolling Simulation: Randomness Principle: This experiment is aimed at simulating the results of rolling dice. Each roll of the dice is inherently random. This randomness can be simulated using a pseudorandom number generator, where the generation of pseudorandom numbers is based on a seed value to ensure reproducibility.
+Probability Distribution: The result of each dice roll is a discrete random event with a uniform probability distribution, where each face has an equal probability of 1/6. This is because each face of a fair six-sided die has an equal chance of appearing.
+Conditional Probability and Bayes' Theorem:
+Conditional Probability Principle: Conditional probability refers to the probability of one event occurring given that another event has occurred. In this context, we consider the conditional probability of selecting a ball from two urns (Urn A and Urn B). Calculating conditional probability involves using known information to infer the probability of events.
+Bayes' Theorem: Bayes' theorem is an important tool for calculating conditional probabilities. It describes how to calculate the conditional probability of an event given some known information. In this experiment, Bayes' theorem is used to calculate the conditional probability of selecting a white ball from Urn A, given that the ball is white.
+Analysis of Conditional Probability for Math Scores: Principles of Data Analysis: In this section, we analyze a dataset of actual student math scores. We focus on two attributes: students' math scores (G3) and their study time (studytime). We use the dataset to estimate the probability of achieving high scores (greater than or equal to 15) in different study time intervals.
+Probability Estimation: We estimate various probabilities using statistical information from the dataset, such as the distribution of students' study times, the probability of achieving high scores, and the probability of achieving high scores in different study time intervals. This helps us understand the relationship between students' study habits and their grades.
+
+Conditional Probability and Baye's Rule
+Conditional probability analysis for math scores
+
+掷骰子模拟：此实验旨在模拟随机事件，特别是掷骰子的结果。通过使用Python编程，我们生成伪随机数以模拟骰子的投掷，然后绘制实验数据的概率分布图。
+
+条件概率与贝叶斯定理：此实验侧重于条件概率的原理和贝叶斯定理的应用。考虑了从两个不同袋子中选择球的情景，然后编写了一个函数来计算在已知选择的球是白色的情况下，该球来自特定袋子的条件概率。
+
+数学分数的条件概率分析：此实验使用实际的学生数学分数数据集，对学生的数学成绩和学习时间之间的条件概率关系进行分析。我们计算了不同学习时间段内获得高分的概率，以及学生学习时间与获得高分之间的关系。
+
+Dice Rolling Simulation: This experiment aims to simulate random events, particularly the outcomes of dice rolls. Using Python programming, we generate pseudorandom numbers to simulate dice throws and then create a probability distribution plot of the experimental data.
+
+Conditional Probability and Bayes' Theorem: This experiment focuses on the principles of conditional probability and the application of Bayes' Theorem. It considers scenarios where balls are chosen from two different urns and then writes a function to calculate the conditional probability of a ball coming from a specific urn when it is known to be white.
+
+Conditional Probability Analysis of Math Scores: This experiment uses a real dataset of student math scores to analyze the conditional probability relationship between students' math scores and their study time. We calculate the probability of achieving high scores in different study time intervals and explore the relationship between students' study time and high scores.
+
+掷骰子模拟：
+设置随机种子：首先，通过设置随机数生成器的种子值。
+模拟骰子掷出：使用Python中的随机数生成函数，模拟掷一个公平的六面骰子。每次模拟将产生一个随机的骰子点数。
+绘制概率分布图：使用Matplotlib库，绘制掷骰子实验结果的概率分布图。同时绘制了理论概率的基准线。
+
+条件概率与贝叶斯定理：
+条件概率计算：编写一个conditional__probability(rA, wA, rB, wB)函数，该函数根据已知条件计算出球来自袋子 A 的条件概率。
+应用贝叶斯定理：在conditional__probability(rA, wA, rB, wB)函数中，应用了贝叶斯定理来计算条件概率。
+
+数学分数的条件概率分析：
+导入学生数据：使用Pandas库导入学生的数学成绩数据集，其中包括了学生成绩（G3）和学习时间（studytime）等属性。
+概率估计：通过统计数据集中的信息，估计了不同学习时间段内获得高分（大于等于15分）的概率，以及学生学习时间和获得高分之间的条件概率关系。
+绘制概率分布图：使用Matplotlib库，绘制了学生的学习时间和获得高分之间的条件概率关系的概率分布图。
+
+
+Dice Rolling Simulation:
+Setting a Random Seed: Firstly, by setting the seed value for the random number generator.
+Simulating Dice Rolls: Simulating the roll of a fair six-sided die using random number generation functions in Python. Each simulation produces a random dice outcome.
+Plotting Probability Distribution: Using the Matplotlib library to create a probability distribution plot of the results from the dice rolling experiment. The plot also includes a baseline for theoretical probabilities.
+
+Conditional Probability and Bayes' Theorem:
+Conditional Probability Calculation: Writing a `conditional_probability(rA, wA, rB, wB)` function that calculates the conditional probability of a ball coming from urn A based on known conditions.
+Application of Bayes' Theorem: The `conditional_probability(rA, wA, rB, wB)` function applies Bayes' Theorem to calculate conditional probability.
+
+Conditional Probability Analysis of Math Scores:
+Importing Student Data: Importing a dataset of student math scores using the Pandas library, which includes attributes such as students' scores (G3) and study time (studytime).
+Probability Estimation: Estimating the probability of achieving high scores (greater than or equal to 15) in different study time intervals and exploring the conditional probability relationship between students' study time and high scores by utilizing information from the dataset.
+Plotting Probability Distribution: Creating a probability distribution plot using the Matplotlib library to visualize the conditional probability relationship between students' study time and high scores.
+
+数据记录和处理：
+
+掷骰子模拟：
+数据记录：在掷骰子模拟中，实验开始时，每次模拟的骰子点数被记录下来。
+数据处理：通过记录骰子点数的结果，数据处理可以包括计算骰子点数的频率和概率分布。
+
+条件概率与贝叶斯定理：
+数据记录：在这一部分，数据记录包括红球和白球的数量，以及已知条件下选择的球的颜色。
+数据处理：数据处理在条件__probability函数中发生，该函数计算条件概率。
+
+数学分数的条件概率分析：
+数据记录：在这一部分，数据记录涉及导入学生成绩和学习时间的数据集。
+数据处理：数据处理包括对数据集进行统计分析，例如估计不同学习时间段内获得高分的概率。这也包括计算学生学习时间和获得高分之间的条件概率关系，以了解这两个变量之间的概率关系。
+
+Dice Rolling Simulation:
+Data Recording: In the dice rolling simulation, at the beginning of the experiment, the outcomes of each simulated dice roll are recorded.
+Data Processing: By recording the results of dice rolls, data processing may involve calculating the frequency and probability distribution of the dice outcomes.
+
+Conditional Probability and Bayes' Theorem:
+Data Recording: In this section, data recording includes the number of red and white balls and the color of the chosen ball under known conditions.
+Data Processing: Data processing occurs within the conditional_probability function, which calculates conditional probabilities.
+
+Conditional Probability Analysis of Math Scores:
+Data Recording: In this section, data recording involves importing a dataset of student scores and study times.
+Data Processing: Data processing includes statistical analysis of the dataset, such as estimating the probability of achieving high scores in different study time intervals. This also includes calculating the conditional probability relationship between students' study time and high scores to understand the probability relationship between these two variables.
+
+不同学习时常占总学生数的比例。
+"Figure (7) Formula for Calculating the Proportion of Different Study Durations to the Total Number of Students."
+"Figure (8) Process for Calculating the Proportion of Different Study Durations to the Total Number of Students."
+高分与低分学生占总学生数的比例。
+"Figure (9) Formula for Calculating the Proportion of High-Scoring and Low-Scoring Students to the Total Number of Students."
+"Figure (10) Process for Calculating the Proportion of High-Scoring and Low-Scoring Students to the Total Number of Students."
+不同学习时常占高分学生的比例。
+"Figure (11) Formula for Calculating the Proportion of Different Study Durations to High-Scoring Students."
+"Figure (12) Process for Calculating the Proportion of Different Study Durations to High-Scoring Students."
+高分学生占不同学习时常学生的比例。
+"Figure (13) Formula for Calculating the Proportion of High-Scoring Students among Different Study Durations."
+"Figure (14) Process for Calculating the Proportion of High-Scoring Students among Different Study Durations."
+
+掷骰子模拟：
+实验结果：通过多次模拟骰子的投掷，记录了每次投掷的结果。
+分析：通过分析实验数据，可以计算每个点数出现的频率和概率分布。实验结果表明，对于一个公平的六面骰子，每个点数出现的概率都是均匀的，为1/6。
+
+条件概率与贝叶斯定理：
+实验结果：实验结果是条件概率的数值。
+分析：结果表明，在给定已知条件下，使用贝叶斯定理可以计算出条件概率。
+
+数学分数的条件概率分析：
+实验结果：实验结果涉及学生数学成绩与学习时间的条件概率关系。具体来说，实验结果包括了不同学习时间段内获得高分（大于等于15分）的概率，以及学生学习时间和获得高分之间的条件概率。
+分析：通过实际数据的分析，可以了解学生的学习时间与获得高分之间的概率关系。分析结果可能表明，较长的学习时间与获得高分之间存在正相关关系。
+
+
+Dice Rolling Simulation:
+Experiment Results: By simulating the rolling of dice multiple times, the results of each roll were recorded.
+Analysis: By analyzing the experimental data, it is possible to calculate the frequency and probability distribution of each possible outcome. The experimental results show that for a fair six-sided die, the probability of each outcome is uniform, being 1/6.
+
+Conditional Probability and Bayes' Theorem:
+Experiment Results: The experiment results are numerical values of conditional probabilities.
+Analysis: The results indicate that, given certain known conditions, Bayes' theorem can be used to calculate conditional probabilities.
+
+Conditional Probability Analysis of Mathematical Scores:
+Experiment Results: The experiment results involve the conditional probability relationship between students' mathematical scores and study time. Specifically, the experiment results include the probability of achieving high scores (greater than or equal to 15 points) within different study time intervals, as well as the conditional probability between students' study time and achieving high scores.
+Analysis: Through the analysis of real data, it is possible to understand the probability relationship between students' study time and achieving high scores. The analysis results may suggest a positive correlation between longer study times and achieving high scores.

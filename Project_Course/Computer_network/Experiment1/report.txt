@@ -1,0 +1,163 @@
+1. 实验目的：
+（1）了解并学习如何使用Python编写一个基本的Web服务器，能够接收、解析和响应HTTP请求消息。
+（2）实现简单的HTTP服务器功能，使其能够根据客户端请求，定位并读取服务器文件系统中的特定文件，并以HTTP响应消息的形式将文件内容返回给请求者。
+（3）处理GET请求，并根据请求的文件是否存在返回相应的内容或404未找到错误信息。
+（4）练习基本的套接字编程和网络通信，理解HTTP消息的格式和内容。
+2. 实验原理：
+（1）使用 Python 中的 socket 模块创建基本的 TCP/IP 服务器，通过监听特定端口，接受来自客户端的连接。
+（2）解析HTTP请求消息，主要是GET请求，提取请求文件名和方法。
+（3）构建服务器文件路径，检查文件是否存在并且是文件（不是目录），读取文件内容。
+（4）根据请求的情况，构建HTTP响应消息，包括状态行、头部信息和实际文件内容。
+（5）通过套接字向客户端发送HTTP响应消息。
+3. 实验过程：
+（1）创建一个基于 IPv4 的TCP套接字，绑定到特定的IP地址和端口，并监听来自客户端的连接请求。
+（2）一旦有连接到来，从客户端接收HTTP请求消息。
+（3）解析请求消息，提取请求的文件名和方法，构建文件路径，检查文件是否存在，读取文件内容。
+（4）构建相应的HTTP响应消息，包括状态行、头部信息和实际文件内容。
+（5）通过套接字向客户端发送HTTP响应消息。
+（6）对于未找到的文件，返回404 Not Found的错误消息。
+4. 实验结论与讨论：
+（1）该实验展示了基本的Python Web服务器的实现，可以处理简单的HTTP GET请求。
+（2）实验通过简单的文件读取和HTTP消息的处理，展现了服务器如何响应请求，并能够返回相应的内容或错误信息。
+
+
+实验二：
+1.实验目的：
+（1）实现一个基于UDP的简单ping程序，通过模拟发送ping消息并接收pong消息来测量往返时间（RTT）。
+（2）了解如何使用Python编写客户端和服务器端程序，实现UDP通信中ping和pong的交互。
+（3）演示模拟数据包丢失，以模拟实际网络中可能出现的丢包情况。
+2. 实验原理：
+客户端利用Python的socket模块创建UDP套接字，向服务器发送ping消息。
+服务器端接收客户端消息，并将消息转换为大写后返回给客户端。
+客户端根据接收到的pong消息计算并打印出每个数据包的往返时间（RTT），模拟数据包丢失，并在1秒内等待服务器的响应。
+3. 实验过程：
+（1）客户端创建UDP套接字，发送10个ping消息给服务器。
+（2）服务器接收ping消息，将消息转换为大写后返回给客户端。
+（3）客户端接收服务器的pong消息，计算每个数据包的往返时间（RTT）。
+（4）客户端模拟数据包丢失，根据设定的丢包率，有可能丢失部分消息。
+（5）客户端记录丢包信息并打印"请求超时"，如果在1秒内未收到服务器的响应。
+4. 实验结论与讨论：
+（1）通过实验展示了基于UDP的ping程序，演示了ping和pong消息的往返时间计算。
+（2）可以模拟数据包丢失，使得部分消息无法收到响应，模拟了实际网络中的丢包情况。
+（3）由于UDP是一种无连接的协议，没有确认机制，因此无法保证数据包的可靠传输。
+
+
+实验三：
+1. 实验目的：
+（1）使用Python和Socket模块开发一个基于TCP的FTP协议，实现简单的文件传输功能。
+（2）通过服务器和客户端的交互，展示基本的文件请求和响应流程，包括请求文件、检查文件是否存在以及发送文件或错误消息。
+2. 实验原理：
+服务器端：
+（1）创建TCP套接字并绑定地址、端口，监听客户端连接。
+（2）接收客户端的连接请求，并等待文件名的请求。
+（3）检查所请求的文件是否存在，若存在则发送文件内容，否则发送错误消息。
+客户端：
+（1）创建TCP套接字并连接到服务器。
+（2）向服务器发送文件名请求。
+（3）接收服务器的文件内容或错误消息，根据响应做出相应处理。
+3. 实验过程：
+服务器端：
+（1）创建TCP套接字，绑定地址和端口，等待客户端连接。
+（2）接收来自客户端的文件名请求，检查文件是否存在。
+（3）如果文件存在，发送文件内容；否则，发送错误消息。
+（4）循环监听客户端的连接和文件请求。
+客户端：
+（1）创建TCP套接字，连接到服务器。
+（2）发送文件名请求给服务器。
+（3）接收来自服务器的文件内容或错误消息，并根据响应进行处理。
+（4）关闭客户端连接。
+4. 实验结论与讨论：
+该简单FTP协议示例展示了基于TCP的简单文件传输功能，具有服务器和客户端之间的基本交互。
+
+
+
+
+
+Experiment 1
+1. Experiment Objectives:
+(1) Understand and learn how to write a basic web server using Python that can receive, parse, and respond to HTTP request messages.
+(2) Implement basic HTTP server functionalities to enable the server to locate and read specific files within the server's file system based on client requests, returning the file contents in the form of HTTP response messages.
+(3) Handle GET requests and return the appropriate content or a 404 Not Found error message based on whether the requested file exists.
+(4) Practice basic socket programming and network communication, understanding the format and content of HTTP messages.
+
+2. Experimental Principles:
+(1) Utilize the socket module in Python to create a basic TCP/IP server, listening on a specific port to accept connections from clients.
+(2) Parse HTTP request messages, primarily GET requests, extracting the requested file name and method.
+(3) Construct the server file path, check file existence and whether it's a file (not a directory), and read file content.
+(4) Based on the request, build an HTTP response message, including a status line, header information, and the actual file content.
+(5) Send the HTTP response message to the client via the socket.
+
+3. Experimental Procedure:
+(1) Create a TCP socket based on IPv4, bind it to a specific IP address and port, and listen for connection requests from clients.
+(2) Upon receiving a connection, receive the HTTP request message from the client.
+(3) Parse the request message, extract the requested file name and method, build the file path, check file existence, and read file content.
+(4) Construct the appropriate HTTP response message, including a status line, header information, and the actual file content.
+(5) Send the HTTP response message to the client via the socket.
+(6) For files not found, return an error message "404 Not Found".
+
+4. Conclusion and Discussion of the Experiment:
+(1) This experiment demonstrates the implementation of a basic Python web server capable of handling simple HTTP GET requests.
+(2) Through simple file reading and processing of HTTP messages, the experiment illustrates how the server responds to requests and can return the corresponding content or error messages.
+
+
+
+2
+Experiment Objectives:
+(1) Implement a simple ping program based on UDP to measure Round-Trip Time (RTT) by simulating the exchange of ping and pong messages.
+(2) Understand how to write client and server programs using Python to achieve the interaction of ping and pong in UDP communication.
+(3) Demonstrate simulating packet loss to replicate potential loss situations in actual networks.
+
+Experiment Principles:
+（1）The client uses Python's socket module to create a UDP socket, sending ping messages to the server.
+（2）The server receives messages from the client, converts them to uppercase, and sends them back to the client.
+（3）The client calculates and prints the Round-Trip Time (RTT) for each received pong message, simulates packet loss, and waits for the server's response within 1 second.
+
+Experiment Procedure:
+(1) The client creates a UDP socket and sends 10 ping messages to the server.
+(2) The server receives the ping messages, converts them to uppercase, and returns them to the client.
+(3) The client receives the server's pong messages, calculates the Round-Trip Time (RTT) for each data packet.
+(4) The client simulates packet loss, potentially losing some messages according to the specified loss rate.
+(5) The client logs the loss information and prints "Request Timed Out" if there is no response from the server within 1 second.
+
+Conclusion and Discussion of the Experiment:
+(1) The experiment demonstrated a UDP-based ping program, showcasing the calculation of Round-Trip Time (RTT) for ping and pong messages.
+(2) It can simulate packet loss, causing some messages to not receive a response, simulating packet loss scenarios in actual networks.
+(3) Because UDP is a connectionless protocol without a confirmation mechanism, it cannot ensure the reliable transmission of data packets.
+
+
+
+
+
+
+Experiment Objectives:
+(1) Develop a basic TCP-based FTP protocol using Python and the Socket module to achieve simple file transfer functionality.
+(2) Demonstrate the fundamental file request and response process between the server and client, including requesting files, checking file existence, and sending files or error messages.
+
+Experiment Principles:
+Server-Side:
+(1) Create a TCP socket, bind it to an address and port, and listen for client connections.
+(2) Accept client connection requests and await file name requests.
+(3) Check if the requested file exists; if it does, send the file content, otherwise, send an error message.
+
+Client-Side:
+(1) Create a TCP socket and connect to the server.
+(2) Send a file name request to the server.
+(3) Receive the file content or error message from the server and respond accordingly.
+
+Experiment Procedure:
+Server-Side:
+(1) Create a TCP socket, bind it to an address and port, and await client connections.
+(2) Receive file name requests from the client and check the file's existence.
+(3) If the file exists, send the file content; otherwise, send an error message.
+(4) Continuously listen for client connections and file requests.
+
+Client-Side:
+(1) Create a TCP socket and connect to the server.
+(2) Send a file name request to the server.
+(3) Receive file content or an error message from the server and act accordingly.
+(4) Close the client connection.
+
+Conclusion and Discussion of the Experiment:
+This simple FTP protocol example demonstrates basic file transfer functionality based on TCP, exhibiting basic interaction between the server and client.
+
+

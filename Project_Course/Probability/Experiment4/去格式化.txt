@@ -1,0 +1,420 @@
+<font size="4" style="color:red;"> **IMPORTANT: ** When submitting this homework notebook, please modify only the cells that start with:</font>
+
+```python
+# modify this cell
+```
+# WenHua Honors Class ---- Probability & Statistics
+# Experiment 4
+## 1. Experimental Purposes
+* Familiar with the central limit theorem.
+* Understand the implementation of the central limit theorem in python.
+* Know how to visualize data in different distributions.
+## 2. Background Information
+The Central Limit Theorem (CLT) is often referred to as one of the most important theorems, not only in probability & statistics but also in the sciences as a whole. In this lecture, we will try to understand the essence of the Central Limit Theorem with simulations in Python.
+### 2.1 Samples and the Sampling Distribution
+Before we get to the theorem itself, it is first essential to understand the building blocks and the context. The main goal of **inferential statistics** is to draw inferences about a given population, using only its subset, which is called the **sample**.
+We do so because generally, the parameters which define the distribution of the population, such as the population mean $\mu$ and the population variance $\sigma^{2}$, are not known.
+In such situations, a sample is typically collected in a random fashion, and the information gathered from it is then used to derive estimates for the entire population.
+The above-mentioned approach is both time-efficient and cost-effective for researchers conducting the analysis. It is important that the sample is a good representation of the population, in order to generalize the inferences drawn from the sample to the population in any meaningful way.
+The challenge is that being a subset, the sample estimates are hence prone to error! That is, they may not reflect the population accurately.
+For example, if we are trying to estimate the population mean ($\mu$) using a sample mean ($\bar x$), then depending on which observations land in the sample, we might get different estimates of the population with varying levels of errors.
+### 2.2 What is the Central Limit Theorem?
+The key point here is that the sample mean itself is a random variable, which is dependent on the sample observations.
+Like any other random variable in statistics, the sample mean ($\bar x$) also has a probability distribution, which shows the probability densities for different values of the sample mean.
+This distribution is often referred to as the 'sampling distribution'. The following diagram summarizes this point visually:
+<img style="width:973px;height:599px" src="figs/sampling-distribution-diagram.png">
+The Central Limit Theorem (CLT) essentially is a statement about the nature of the sampling distribution of the sample mean under some specific condition, which we will discuss in the next section.
+### 2.3 Central Limit Theorem - Statement & Assumptions
+Suppose $X$ is a random variable (not necessarily normally distributed) representing the population data, and the distribution of $X$, has a mean of $\mu$ and standard deviation $\sigma$. Suppose we are repeatly drawing samples of size $n$ from the above population.
+Then, the Central Limit Theorem states that given a high enough sample size, the following properties hold true:
+* Sampling distribution's mean = Population mean ($\mu$), and
+* Sampling distribution's standard deviation (standard error) = $\sigma/\sqrt{n}$, such that
+* for n ≥ 50, the sampling distribution tends to a normal distribution for all practical purposes.
+In other words, for a large $n$, 
+$$\bar{x}\longrightarrow\mathbb{N}\left(\mu,\frac{\sigma}{\sqrt{n}}\right)$$
+In the next section, we will try to understand the workings of the CLT with the help of some simulation excercises in Python.
+## 3. Experimental Requirements
+### 3.1 Demonstration of CLT in action using simulations in Python
+The main point demonstrated in this section will be that for a population following any distribution, the sampling distribution (sample mean's distribution) will tend to be normally distributed for large enough sample size.
+We will consider two experiments and check whether the CLT holds.
+* Experiment 1 - Exponentially distributed population
+* Experiment 2 - Binomially distributed population
+#### 3.1.1 Experiment 1 - Exponentially distributed population
+Suppose we are dealing with a population which is exponentially distributed. Exponential distribution is a continuous distribution that is often used to model the expected time one needs to wait before the occurrence of an event.
+The main parameter of exponential distribution is the 'rate' parameter $1/\theta$, such that both the mean and the standard deviation of the distribution are given by $\theta$.
+The following represents our exponentially distributed population:
+<img style="float: left;width:370px;height:228px" src="figs/exponentially-distributed-population.png">
+$f(x) = \cases{\frac{1}{\theta} e^{-\frac{x}{\theta}} & if $x> 0$\cr0 & \text{otherwise}}$
+We can see that the distribution of our population is far from normal! In the following code, assuming that $\theta=4$, **please calculate the mean and the standard deviation of the population**.
+# modify this cell
+
+# Importing necessary libraries
+import warnings
+warnings.filterwarnings('ignore')
+import pandas as pd, numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+
+
+# rate parameter for the exponentially distributed population
+theta = 4.0
+
+# Population mean (mu), representing mean by parameter theta
+
+mu = theta
+
+# Population standard deviation (sd), representing sd by parameter theta
+
+sd = theta
+
+print('Population mean:', mu)
+print('Population standard deviation:', sd)
+
+assert mu == 4.0
+assert sd == 4.0
+Now we want to see how the sampling distribution looks for this population. We will consider two cases, i.e., with a small sample size ($n= 2$), and a large sample size ($n=500$).
+First, we will draw 50 random samples (each of size 2) from our population.
+# drawing 50 random samples of size 2 from the exponentially distributed population
+sample_size = 2
+df2 = pd.DataFrame(index= ['x1', 'x2'])
+
+for i in range(1, 51):
+    exponential_sample = np.random.exponential(theta, sample_size)
+    col = f'sample {i}'
+    df2[col] = exponential_sample
+
+# Taking a peek at the samples
+df2
+For each of the 50 samples, we can calculate the sample mean and plot its distribution as follows:
+# Calculating sample means and plotting their distribution
+df2_sample_means = df2.mean()
+sns.distplot(df2_sample_means)
+We can observe that even for a small sample size such as 2, the distribution of sample means looks very different from that of the exponential population, and looks more like a poor approximation of a normal distribution, with some positive skew.
+In case 2, we will repeat the above process, but with a much larger sample size ($n=500$):
+# modify this cell
+
+# Please refer to the previous example to draw 50 random samples of size 500
+# Tips: You can use the "np.random.exponential" function to implement a exponential distribution.
+
+sample_size = 500
+sample_num = 50
+df500 = pd.DataFrame(index=range(1, sample_size + 1))
+
+for i in range(1, sample_num + 1):
+    exponential_sample_large = np.random.exponential(theta, sample_size)
+    col = f'sample {i}'
+    df500[col] = exponential_sample_large
+
+df500_sample_means = df500.mean()
+sns.distplot(df500_sample_means)
+The sampling distribution looks much more like a normal distribution now as we have sampled with a much larger sample size ($n=500$).
+Let us now check the mean and the standard deviation of the 50 sample means:
+#The first 5 values from the 50 sample means
+df500_sample_means.head()
+We can observe that the mean of all the sample means is quite close to the population mean ($\mu = 4$).
+Similarly, we can observe that the standard deviation of the 50 sample means is quite close to the value stated by the CLT, i.e., $(\sigma/ \sqrt{n}) = 0.178$.
+# modify this cell
+
+# An estimate of the standard deviation of the sampling distribution can be obtained as:
+
+sample_data_std_deviation  = df500_sample_means.std()
+print("Estimate of standard deviation of the sampling distribution:", sample_data_std_deviation )
+# If you calculate correctly, the above value is very close to the value stated by the CLT, which is:
+sd/np.sqrt(sample_size)
+Thus, we observe that the mean of all sample means is very close in value to the population mean itself.
+Also, we can observe that as we increased the sample size from 2 to 500, the distribution of sample means increasingly starts resembling a normal distribution, with mean given by the population mean $\mu$ and the standard deviation given by $(\sigma / \sqrt{n})$ , as stated by the Central Limit Theorem.
+#### 3.2 Experiment 2 -  Binomially distributed population
+In the previous example, we knew that the population is exponentially distributed with parameter $\theta=4$.
+Now you might wonder what would happen to the sampling distribution if we had a population which followed some other distribution say, Binomial distribution for example.
+*Would the sampling distribution still resemble the normal distribution for large sample sizes as stated by the CLT?*
+Let's test it out. The following represents our Binomially distributed population (recall that Binomial is a discrete distribution and hence we produce the probability mass function below):
+<img style="float: left;width:329px;height:243px" src="figs/probability-function-clt.png">
+$P(x) = \cases{\binom k x (p)^x(1-p)^{1-x} & if $x = 0, 1, 2,..., k$ \cr0 & \text{otherwise}}$
+where, $0\leq p\leq 1$
+As before, we follow a similar approach and plot the sampling distribution obtained with a large sample size ($n = 500$) for a Binomially distributed variable with parameters $k = 30$ and $p = 0.9$
+# modify this cell
+
+# drawing 50 random samples of size 500 from a Binomial distribution with parameters k= 30 and p=0.9
+# Tips: You can use the "np.random.binomial" function to implement a binomial distribution.
+
+k = 30
+p = 0.9
+sample_size = 500
+sample_num = 50
+
+df500_binomial = pd.DataFrame(index=range(1, sample_size + 1))
+
+for i in range(1, sample_num + 1):
+    binomial_sample_large = np.random.binomial(k, p, sample_size)
+    col = f'sample {i}'
+    df500_binomial[col] = binomial_sample_large
+
+df500_binomial_sample_means = df500_binomial.mean()
+sns.distplot(df500_binomial_sample_means)
+For this experiment, as we assumed that our population follows a Binomial distribution with parameters $k = 30$ and $p = 0.9$
+Which means if CLT were to hold, the sampling distribution should be approximately normal with mean = population mean = $\mu= 27$ and standard deviation = $\sigma/\sqrt{n} = 0.0734$.
+# modify this cell
+
+# Please compute the mean of sample means. If you calculate correctly, mean of sample means is close to the population mean.
+
+mean_of_sample_means = df500_binomial_sample_means.mean()
+
+mean_of_sample_means_n = 0
+
+for i in range(0, sample_num ):
+    mean_of_sample_means_n += df500_binomial_sample_means[i]
+
+mean_of_sample_means_n /= sample_num
+
+print("Mean of sample means:", mean_of_sample_means)
+print("Mean of sample means:", mean_of_sample_means_n)
+# modify this cell
+
+# Please compute the standard deviation of sample means. If you calculate correctly, standard deviation of sample means is close to population standard deviation divided by square root of sample size.
+
+std_dev_of_sample_means = df500_binomial_sample_means.std()
+
+std_dev_of_sample_means_n = 0
+
+for i in range(0, sample_num ): 
+    std_dev_of_sample_means_n += (df500_binomial_sample_means[i] - mean_of_sample_means_n) ** 2
+
+std_dev_of_sample_means_n /= sample_num
+std_dev_of_sample_means_n = np.sqrt(std_dev_of_sample_means_n)
+
+print("Standard deviation of sample means:", std_dev_of_sample_means)
+print("Standard deviation of sample means:", std_dev_of_sample_means_n)
+And the CLT holds again, as can be seen in the above results.
+The sampling distribution for a Binomially distributed population also tends to a normal distribution with mean $\mu$ and standard deviation $\sigma/\sqrt{n}$ for large sample size.
+## 3.2 An Application of CLT in Investing/Trading
+### 3.2.1 The Challenge for Investors
+A common challenge that an investor faces is to determine whether a stock is likely to meet her investing goals. For example, consider Jyoti, who is looking to invest in a safe stock for the next five years.
+Being a risk averse investor, she would only feel comfortable to invest in a stock if it gives preferably non-negative monthly returns on average and where she can be reasonably confident that her average monthly return will not be less than -0.5%.
+Jyoti is very interested in the ITC (NSE: ITC) stock, but wants to make sure that it meets her criterion. In such a case, *is there some theoretical/statistical framework which can help her to reach a conclusion about the average monthly return of the ITC stock with some confidence?*
+The answer is yes! And such a statistical framework is based on the assumption of the return distribution, which in turn is based on the Central Limit Theorem (CLT).
+In the next section, we start conducting our analysis on the ITC stock data.
+### 3.2.2 The Great Assumption of Normality in Finance
+In finance models (like the Black-Scholes option pricing model), we usually assume that the price series is log-normally distributed, and so returns are normally distributed.
+And so for investors and traders, who use these models to invest or trade in the market, a lot depends on whether or not the assumption of normality actually holds in the markets.
+Let us check it out for the ITC (NSE: ITC) stock in which Jyoti is interested. To conduct the analysis, we first import some standard Python libraries and fetch the daily Close-Close ITC stock data from the yfinance library.
+**Please try to do a visual analysis of the distribution of daily returns.**
+# standard imports
+import pandas as pd
+import numpy as np
+import pyfolio as pf
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+pd.set_option('display.max_rows', None)
+
+# Fetching the ITC stock data from yfinance library for the past 10 years
+ITC = pd.read_csv('ITC.NS.csv')
+
+daily_data = ITC.copy().round(4)
+
+# Calculating daily Log returns
+daily_data['daily_return']= np.log(daily_data['Adj Close']/daily_data['Adj Close'].shift())
+daily_data.dropna(inplace=True)
+
+# Taking a peek at the fetched data
+daily_data.head()
+Now that we have the daily log returns for ITC. **Please visualize both the returns and their distribution according to the diagrams below.**
+<img style="float: center;width:508px;height:370px" src="figs/actual-values-of-daily-log-returns-over-time-1.png">
+<img style="float: center;width:469px;height:371px" src="figs/distribution-of-daily-log-returns.png">
+# modify this cell
+
+# Visualizing the daily log returns
+sns.set(style="white", palette="muted", color_codes=True)
+plt.figure(figsize=(12,5))
+
+plt.subplot(1,2,1)
+
+# Plot a simple histogram with binsize determined automatically.
+# Please add the labels of the x, y axes and titles in the figure.
+# Tips: sns.lineplot(daily_data.index,daily_data['daily_return'], color="r")
+
+plt.plot(daily_data.index, daily_data['daily_return'], color="r")
+
+plt.xlabel("Date")
+plt.ylabel("Daily Log Returns")
+plt.title("Daily Log Returns Over Time")
+
+plt.subplot(1,2,2)
+
+# Plot a simple histogram with binsize determined automatically.
+# Please add the labels of the x, y axes and titles in the figure.
+# Tips: sns.distplot(daily_data['daily_return'], kde=False, color="r")
+
+sns.distplot(daily_data['daily_return'], kde=False, color="r")
+
+plt.xlabel("Daily Log Returns")
+plt.ylabel("Frequency")
+plt.title("Distribution of Daily Log Returns")
+
+plt.tight_layout()
+
+plt.show()
+
+# Remember to use the command to visualize.
+# You can use "plt.tight_layout()" to make the layout more beautiful. 
+We can observe that in the ten years we are using, the daily return for ITC is centred around 0. However, there have been multiple occasions when it has breached the five percent mark on the upside and even a negative ten percent mark on the downside.
+This is what is responsible for the higher kurtosis or the fat-tails which is not the case with a normal distribution. The plot of the distribution of daily returns also looks leptokurtik.
+## 3.3 More visualization exercises
+A continuous random variable is a random variable that represents an infinite number of outcomes. If we sample a continuous random variable $X$, the obtained samples may not cover the whole sample space. Since the sample space of a continuous distribution has infinite number of observations, to estimate the exact distribution of the random variable we need infinite number of samples. Since this is not practically possible, we can use parameterized continuous distributions to approximate the observed distribution.
+In this assignment we will use the [hourly weather dataset](https://www.kaggle.com/selfishgene/historical-hourly-weather-data/data) and look at the temperature recording for the city of Detroit. We will use continuous distributions we have studied to approximate the observed distributions.
+**Useful functions:**
+The module **scipy.stats** has an extensive number of probability distributions and useful statistical function definitions.
+For plotting the probability density of the data use the  function in the library **matplotlib.pyplot** and set the argument **density=True**. How this function estimates the probability is outlined in matplotlib library documentation.
+# modify this cell
+
+# Please plot a histogram with 100 bins using all the samples.
+# Please add the labels of the x, y axes and titles in the figure.
+
+# modify this cell
+
+# Please plot a histogram with 100 bins using all the samples.
+# Please add the labels of the x, y axes and titles in the figure.
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+temperature_data = pd.read_csv('temperature.csv')
+
+detroit_temperature = temperature_data['Detroit']
+
+plt.figure(figsize=(12, 12))
+
+sns.histplot(detroit_temperature, bins=100, kde=False, color="blue", stat="density")
+
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, detroit_temperature.mean(), detroit_temperature.std())
+
+plt.plot(x, p, 'k', linewidth=2)
+
+plt.xlabel("Temperature (C)")
+plt.ylabel("Density")
+plt.title("Distribution of Temperature in Detroit")
+
+plt.show()
+If you plot it correctly, you will get a histogram similar to the one below.
+<img style="float: left;width:393px;height:305px" src="figs/histogram.png">
+Additional credits: Create more plot from the temperature recording of different cities. For example, the 7 Day Moving Average Plot, the temparature variation of different cities in a single figure, the visualization of humidity, pressure and temperature of Detroit in a single figure. **Insert new cells for these figures**
+humidity_data = pd.read_csv('humidity.csv')
+pressure_data = pd.read_csv('pressure.csv')
+
+plt.figure(figsize=(12, 12))
+
+# 湿度
+plt.subplot(3, 1, 1)
+plt.plot(humidity_data.index, humidity_data['Detroit'], color='b')
+plt.xlabel("Date")
+plt.ylabel("Humidity")
+plt.title("Humidity Variation in Detroit")
+
+# 气压
+plt.subplot(3, 1, 2)
+plt.plot(pressure_data.index, pressure_data['Detroit'], color='r')
+plt.xlabel("Date")
+plt.ylabel("Pressure")
+plt.title("Pressure Variation in Detroit")
+
+# 温度
+plt.subplot(3, 1, 3)
+plt.plot(temperature_data.index, temperature_data['Detroit'], color='g')
+plt.xlabel("Date")
+plt.ylabel("Temperature (C)")
+plt.title("Temperature Variation in Detroit")
+
+plt.tight_layout()
+plt.show()
+merged_data = pd.DataFrame({
+    'Date': temperature_data['datetime'],
+    'Temperature': temperature_data['Detroit'],
+    'Humidity': humidity_data['Detroit'],
+    'Pressure': pressure_data['Detroit']
+})
+
+merged_data['Date'] = pd.to_datetime(merged_data['Date'])
+merged_data.set_index('Date', inplace=True)
+
+resampled_data = merged_data.resample('D').mean()
+
+window_size = 7
+smoothed_data = resampled_data.rolling(window=window_size).mean()
+
+plt.figure(figsize=(12, 12))
+
+# 湿度
+plt.subplot(3, 1, 1)
+plt.plot(smoothed_data.index, smoothed_data['Humidity'], color='b')
+plt.xlabel("Date")
+plt.ylabel("Humidity")
+plt.title("Smoothed Humidity Variation in Detroit")
+
+# 气压
+plt.subplot(3, 1, 2)
+plt.plot(smoothed_data.index, smoothed_data['Pressure'], color='r')
+plt.xlabel("Date")
+plt.ylabel("Pressure")
+plt.title("Smoothed Pressure Variation in Detroit")
+
+# 温度
+plt.subplot(3, 1, 3)
+plt.plot(smoothed_data.index, smoothed_data['Temperature'], color='g')
+plt.xlabel("Date")
+plt.ylabel("Temperature (C)")
+plt.title("Smoothed Temperature Variation in Detroit")
+
+plt.tight_layout()
+plt.show()
+import pandas as pd
+import matplotlib.pyplot as plt
+import ipywidgets as widgets
+from IPython.display import display
+
+temperature_data = pd.read_csv('temperature.csv')
+
+temperature_data['datetime'] = pd.to_datetime(temperature_data['datetime'])
+temperature_data.set_index('datetime', inplace=True)
+
+resampled_data = temperature_data.resample('D').mean()
+
+window_size = 7
+smoothed_data = resampled_data.rolling(window=window_size).mean()
+
+plt.figure(figsize=(12, 8))
+
+initial_cities = ['Vancouver', 'Portland', 'San Francisco', 'Seattle', 'Los Angeles']
+
+lines = {city: {'line': None, 'visible': True} for city in initial_cities}
+
+for city in initial_cities:
+    lines[city]['line'], = plt.plot(smoothed_data.index, smoothed_data[city], label=city)
+
+plt.xlabel("Date")
+plt.ylabel("7-Day Moving Average Temperature")
+plt.title("7-Day Moving Average Temperature for Different Cities")
+plt.legend()
+
+checkbox_options = {city: widgets.Checkbox(description=city, value=True) for city in initial_cities}
+checkboxes = [checkbox_options[city] for city in initial_cities]
+checkbox_container = widgets.HBox(checkboxes)
+
+display(checkbox_container)
+
+def update_visibility(change):
+    for city, checkbox in checkbox_options.items():
+        lines[city]['visible'] = checkbox.value
+        lines[city]['line'].set_visible(lines[city]['visible'])
+        print(f"City: {city}, Visible: {lines[city]['visible']}")
+    plt.draw()
+
+for checkbox in checkboxes:
+    checkbox.observe(update_visibility, names='value')
+
+plt.show()
+

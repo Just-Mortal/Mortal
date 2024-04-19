@@ -1,0 +1,22 @@
+1、下载数据集 MNIST
+
+任务一：
+1、感知器区分数字6，数字为6时+1，数字不为6时-1
+2、补充：绘制图标前需要了解感知器的相关知识点。
+3、绘制图表！！！
+
+任务二：
+模式识别系统，将数字分为(0,1),(2,3),(4,5,6),
+(7,8,9)
+
+后面的任务 Matlab ：
+
+
+Question:
+1、对于手写体识别来说，特征值是什么？
+
+3、我提前在文件夹中对他们进行了解压，并且解压后的文件t10k-images.idx3-ubyte，t10k-labels.idx1-ubyte，train-images.idx3-ubyte，train-labels.idx1-ubyte和我的python代码放置在了同一个文件夹下面。
+
+2、这是我下载的训练集图像train-images-idx3-ubyte.gz，训练集标签train-labels-idx1-ubyte.gz，测试集图像t10k-images-idx3-ubyte.gz，S测试集标签t10k-labels-idx1-ubyte.gz。请问我如何使用他们？
+
+DDL：1.9

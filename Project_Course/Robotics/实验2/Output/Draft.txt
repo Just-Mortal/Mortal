@@ -1,0 +1,117 @@
+一、实验原理。
+第一步：扫描图像的每个像素点，对于像素值相同的且相互连通的分为相同的组(group)，标记为Label 1。
+第二步：合并具有从属关系的Label，并重新排序得到最终的连通组件。
+有一个大小为2*2的window窗口对二值化之后的图片进行扫描。先按行进行扫描，扫描完此行之后扫描下一行直到扫描完整个图片。遇到黑像素标记一个ID，如果窗口里面有不同ID的黑像素则以左上角的ID为准，其次时左下角，最后时右上角。统一一个联同体的ID号，次优先级像素ID被高优先级的ID覆盖，从而实现分割联同体的效果。
+
+第一步：对图像进行逐像素扫描，将相同像素值且相互连通的像素点分为相同的组(group)，并标记为Label 1。
+第二步：合并具有从属关系的Label，重新排序以获得最终的连通组件。
+在这个过程中，使用了一个大小为2*2的窗口对经过二值化处理的图像进行扫描。首先按行进行扫描，完成一行后继续扫描下一行，直至覆盖整个图像。在扫描过程中，若遇到黑色像素，则标记一个Label。如果窗口内存在不同Label的黑像素，以左上角的Label为准，其次是左下角，最后是右上角。这样统一了一个连通体的Label号，次优先级像素的Label会被高优先级的Label覆盖，从而实现了对连通体的分割效果。
+
+Explanation of Principles
+
+Step 1: Perform a pixel-wise scan of the image, grouping pixels with the same value and connected to each other into the same group (labeled as Label 1).
+Step 2: Merge labels with a subordinate relationship, reordering to obtain the final connected components.
+During this process, a 2x2 window is used to scan the binarized image. The scan starts row by row, covering the entire image. If a black pixel is encountered, a label is assigned. If there are different labels for black pixels within the window, priority is given to the top-left label, followed by the bottom-left label, and finally the top-right label. This ensures a unified label for a connected component, where lower-priority pixel labels are overridden by higher-priority ones, achieving the segmentation effect of connected components.
+
+Detailed explanation of the labeling process:
+
+Implementation Steps
+
+1. Convert the color image to a grayscale image using the OpenCV library function: `gray_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)`. If you want to implement your own grayscale conversion function, you can refer to the OpenCV official website.
+
+Effect:
+
+2. Filter the grayscale image to reduce noise interference.
+Specific steps of median filtering (as shown in the flowchart):
+   - Define a sliding window or convolution kernel, usually a square matrix (e.g., 3x3, 5x5). The window moves across the image, covering each pixel.
+   - Sort all pixel values within the window based on their grayscale values.
+   - Replace the current pixel's grayscale value with the sorted median value.
+
+Effect (note: this is the result after filtering a binary image and re-binarizing):
+
+   Median filter window size: 15
+
+3. Obtain a binary image.
+Here, the threshold for the binary image is set as the average value of the grayscale pixels in the grayscale image. Pixels with values greater than this threshold are set to 255 (black pixels), and pixels with values less than this threshold are set to 0 (white pixels).
+
+Note: The binarization operation should be applied to the grayscale image after filtering.
+
+4. Connected component labeling
+Corresponds to the following six cases:
+   - The pixel under study itself is not part of an object (black pixel), increment the label by 1.
+   - The pixel under study is not a black pixel but has black pixels to its top-left, top-right, and bottom-left, mark it with a new label.
+   - The pixel under study is not a black pixel, and there are no black pixels to its top-left, no labeling is performed.
+   - The pixel under study is not a black pixel, has black pixels to its top-left and top-right (object), but not to its bottom-left, assign the current pixel's label to the bottom-left label.
+   - The pixel under study is not a black pixel, has black pixels to its top-left and bottom-left (object), but not to its top-right, assign the current pixel's label to the top-right label.
+   - The pixel under study is not a black pixel, has a black pixel to its top-left (object), but not to its bottom-left and top-right, assign the current pixel's label to the bottom-left or top-right label.
+
+Principle diagram:
+
+Corresponding code:
+
+5. Unify connected components.
+After the labeling process, an object may have multiple labels. It's necessary to unify connected regions with equal labels. Assign a unique identifier to each connected component.
+
+Principle diagram:
+
+Code implementation:
+
+6. Find the geometric center of connected components.
+Calculating the center of the connected component aims to obtain information about the object's position, which is useful for object localization, tracking, and shape description. The center is typically calculated as the average of all pixel coordinates within the connected component, using the formula:
+
+\[ \text{Center} = \left( \frac{\sum{x}}{n}, \frac{\sum{y}}{n} \right) \]
+
+For image processing, a discrete calculation method is used, as shown in the diagram:
+
+Code implementation:
+
+7. Determine the orientation of the object.
+Inertia moments are a mathematical tool for describing the shape and orientation of an object. In image processing, especially when dealing with connected components, calculating inertia moments can help determine the orientation of the connected component. The detailed process of calculating inertia moments is as follows:
+
+   1. Centering: Centerize all pixel coordinates within the connected component. Centering is done to eliminate the influence of position. For \(n\) pixels with coordinates \( (x_i, y_i) \), calculate the center coordinates \( (\bar{x}, \bar{y}) \) using the formulas:
+
+\[ \bar{x} = \frac{\sum{x_i}}{n} \]
+\[ \bar{y} = \frac{\sum{y_i}}{n} \]
+
+   2. **Calculate the second-order central moment:** The second-order central moment represents the product relationship between pixel coordinates within the connected component. Its calculation formula is:
+
+\[ M_{ij} = \sum{(x_i - \bar{x})^i \cdot (y_i - \bar{y})^j} \]
+
+   3. **Calculate the inertia matrix:** Use the centered coordinates and the second-order central moment to calculate the inertia matrix \( I \):
+
+\[ I = \begin{bmatrix} M_{20} & M_{11} \\ M_{11} & M_{02} \end{bmatrix} \]
+
+   4. **Calculate eigenvalues and eigenvectors:** Perform eigenvalue decomposition on the inertia matrix \( I \). Eigenvalues and corresponding eigenvectors describe the main directions of the inertia matrix.
+
+   5. **Select the main direction:** Choose the eigenvector corresponding to the larger eigenvalue as the main direction. The main direction corresponds to the orientation of the connected component. By calculating inertia moments, information about the orientation of the connected component can be obtained.
+
+Code implementation:
+
+8. Draw borders and ellipses.
+Calculate the semi-major axis and semi-minor axis of the ellipse:
+
+Use the inertia matrix of the connected component (obtained through the second-order central moment) to determine the lengths of the semi-major and semi-minor axes of the ellipse. This is usually related to the eigenvalues of the inertia matrix. The inertia matrix is given by:
+
+\[ I = \begin{bmatrix} M_{20} & M_{11} \\ M_{11} & M_{02} \end{bmatrix} \]
+
+Where:
+
+\[ a = \sqrt{\frac{2(M_{20} + M_{02} + \sqrt{(M_{20} - M_{02})^2 + 4M_{11}^2})}{\lambda_1}} \]
+
+\[ b = \sqrt{\frac{2(M_{20} + M_{02} - \sqrt{(M_{20} - M_{02})^2 + 4M_{11}^2})}{\lambda_2}} \]
+
+Calculate the eccentricity:
+
+\[ e = \sqrt{1 - \frac{b^2}{a^2}} \]
+
+Calculate the rotation angle of the ellipse:
+
+Utilize the angle information in the eigenvector to calculate the rotation angle of the ellipse. This angle represents the relationship between the main direction of the connected component and the main axis direction of the
+
+ ellipse.
+
+Code implementation:
+
+Output results:
+
+[Insert Output Images or Plots]
