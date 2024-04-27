@@ -1,5 +1,4 @@
 Welcome to the grocery store of Little Burger 
-
 ========
 
 - 👋 Hi, I’m @Just-Mortal
