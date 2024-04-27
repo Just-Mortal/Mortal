@@ -6,6 +6,12 @@ Welcome to the grocery store of Little Burger
 - 👀 I’m a student of Shenzhen University
 - 📫 My email is 2803192636@qq.com
 
+<div style="text-align:center;">
+    <p>
+        <code><img width="30%" src="Image/Life.jpg"></code>
+    </p>
+</div>
+
 ## Structure of folder
 * Doc
   
@@ -53,4 +59,10 @@ Welcome to the grocery store of Little Burger
         `RobotPilots 战队步兵机器人电控代码`
 
         `完成时间：大二`
+
+<div style="text-align:center;">
+    <p>
+        <code><img width="40%" src="Image/Robomaster.jpg"></code>
+    </p>
+</div>
 
