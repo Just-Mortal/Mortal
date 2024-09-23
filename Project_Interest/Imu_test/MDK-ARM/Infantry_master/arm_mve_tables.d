@@ -1,0 +1,9 @@
+infantry_master\arm_mve_tables.o: ..\User\Device\IMU\DSP\arm_mve_tables.c
+infantry_master\arm_mve_tables.o: ../User/Device/IMU/CMSIS/DSP/Include/arm_math_types.h
+infantry_master\arm_mve_tables.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+infantry_master\arm_mve_tables.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+infantry_master\arm_mve_tables.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+infantry_master\arm_mve_tables.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+infantry_master\arm_mve_tables.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
+infantry_master\arm_mve_tables.o: D:\keil5\ARM\ARMCC\Bin\..\include\float.h
+infantry_master\arm_mve_tables.o: D:\keil5\ARM\ARMCC\Bin\..\include\limits.h
