@@ -1,6 +1,13 @@
 Welcome to the grocery store of Little Burger 
 ========
 
+# 工程日志
+|日期|内容|
+|:---:|:----:|
+|2024.09.23|今日开始写日志|
+|||
+
+
 - 👋 Hi, I’m @Just-Mortal
 - 😄 My name is Sujian Jia
 - 👀 I’m a student of Shenzhen University
