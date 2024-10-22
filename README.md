@@ -5,24 +5,16 @@ Welcome to the grocery store of Little Burger
 |日期|内容|
 |:---:|:----:|
 |2024.09.23|今日开始写日志|
-|2024.09.24|我也不知道23号学了什么，今日确定轮腿的电机选型|
+|2024.09.24|今日确定轮腿的电机选型|
 ||关节电机采用瓴控6012，轮毂电机采用瓴控6020。|
-|2024.09.25~2024.09.28|轮毂电机采用6020很难画脚部轴承处，放弃绘制。|
+|2024.09.25-2024.09.28|轮毂电机采用6020很难画脚部轴承处，放弃绘制。|
 |2024.10.04|学会Webots的基本使用，建模并编写代码使一个四轮小车直线运动。|
 |2024.10.05|自己用webots建立轮腿模型，电机、位置传感器、IMU。|
 |2024.10.06|成功配置cmake（需要添加环境变量）|
 |2024.10.13|完成五连杆部分代码移植。|
-
-- 👋 Hi, I’m @Just-Mortal
-- 😄 My name is Sujian Jia
-- 👀 I’m a student of Shenzhen University
-- 📫 My email is 2803192636@qq.com
-
-<div style="text-align:center;">
-    <p>
-        <code><img width="30%" src="Image/Life.jpg"></code>
-    </p>
-</div>
+|2024.10.14-2024.10.16|完成直腿模型控制部分代码移植。|
+|2024.10.17-2024.10.21|完成四连杆测试机构的绘制与组装|
+|2024.10.22|完成四连杆代码编写与调试，实践和理论一直，两条大连杆受力等效。|
 
 ## Structure of folder
 * Doc
@@ -71,10 +63,3 @@ Welcome to the grocery store of Little Burger
         `RobotPilots 战队步兵机器人电控代码`
 
         `完成时间：大二`
-
-<div style="text-align:center;">
-    <p>
-        <code><img width="40%" src="Image/Robomaster.jpg"></code>
-    </p>
-</div>
-
