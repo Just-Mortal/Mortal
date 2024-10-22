@@ -1,0 +1,11 @@
+infantry_master\kalman_filter.o: ..\User\Algorithm\kalman_filter.c
+infantry_master\kalman_filter.o: ..\User\Algorithm\kalman_filter.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Include/core_cm4.h
+infantry_master\kalman_filter.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Include/cmsis_version.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+infantry_master\kalman_filter.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+infantry_master\kalman_filter.o: ..\User\Device\IMU\DSP\arm_math.h
