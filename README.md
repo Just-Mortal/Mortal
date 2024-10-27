@@ -1,6 +1,13 @@
 Welcome to the grocery store of Little Burger 
 ========
 
+## Structure of folder
+* Doc       `文本文件`          `项目规划，研发周期等`      [Doc文件结构](./Doc/README.md)
+
+* Course    `课程作业与项目`    [Course文件结构](./Course/README.md)
+
+* Project   `个人项目`          [Project文件结构](./Project/README.md)
+
 # 工程日志
 |日期|内容|
 |:---:|:----:|
@@ -15,51 +22,6 @@ Welcome to the grocery store of Little Burger
 |2024.10.14-2024.10.16|完成直腿模型控制部分代码移植。|
 |2024.10.17-2024.10.21|完成四连杆测试机构的绘制与组装|
 |2024.10.22|完成四连杆代码编写与调试，实践和理论一直，两条大连杆受力等效。|
-
-## Structure of folder
-* Doc
-  
-     `文本文件`
-
-
-* Image
-
-    `图像文件`
-
-
-* Project_Course
-
-    * Analog_and_digital_circuits
-        
-        `电子电路包括数字电路和模拟电路`
-
-    * Computer_network
-
-        `计算机网络`
-
-    * Probability
-
-        `概率论与数理统计`
-
-    * Robotics
-  
-        `机器人学导论`
-
-        `实验一：双目相机计算图片深度`
-
-        `实验二：物体标定与提取`
-
-        `实验三：MNIST数字手写体识别`
-
-* Project_Interest
-    * Balance_car
-
-        `两轮平衡小车`
-
-        `完成时间：大一下`
-
-    * Infantry
-
-        `RobotPilots 战队步兵机器人电控代码`
-
-        `完成时间：大二`
+|2024.10.23-2024.10.25|新规则公布，新赛季准备。修理战队轮腿机器人。|
+|2024.10.26|绘制nano小电脑保护壳并3D打印。|
+||学习ROS至通信部分。|
