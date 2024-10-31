@@ -26,3 +26,4 @@ Welcome to the grocery store of Little Burger
 |2024.10.26|绘制nano小电脑保护壳并3D打印。|
 ||学习ROS至通信部分。|
 |2024.10.27-2024.10.30|ROS通信部分学习结束，开始实战练习。|
+|2024.10.31|写边缘计算实验。|
