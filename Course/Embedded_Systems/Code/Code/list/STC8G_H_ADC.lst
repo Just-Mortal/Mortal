@@ -1,0 +1,121 @@
+C51 COMPILER V9.60.0.0   STC8G_H_ADC                                                       12/26/2024 07:59:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE STC8G_H_ADC
+OBJECT MODULE PLACED IN .\list\STC8G_H_ADC.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE Library\STC8G_H_ADC.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Config;.\Driv
+                    -er;.\Device;.\Library) DEBUG PRINT(.\list\STC8G_H_ADC.lst) TABS(2) OBJECT(.\list\STC8G_H_ADC.obj)
+
+line level    source
+
+   1          /*---------------------------------------------------------------------*/
+   2          /* --- STC MCU Limited ------------------------------------------------*/
+   3          /* --- STC 1T Series MCU Demo Programme -------------------------------*/
+   4          /* --- Mobile: (86)13922805190 ----------------------------------------*/
+   5          /* --- Fax: 86-0513-55012956,55012947,55012969 ------------------------*/
+   6          /* --- Tel: 86-0513-55012928,55012929,55012966 ------------------------*/
+   7          /* --- Web: www.STCAI.com ---------------------------------------------*/
+   8          /* --- BBS: www.STCAIMCU.com  -----------------------------------------*/
+   9          /* --- QQ:  800003751 -------------------------------------------------*/
+  10          /* 如果要在程序中使用此代码,请在程序中注明使用了STC的资料及程序            */
+  11          /*---------------------------------------------------------------------*/
+  12          
+  13          #include  "STC8G_H_ADC.h"
+  14          
+  15          //========================================================================
+  16          // 函数: void ADC_Inilize(ADC_InitTypeDef *ADCx)
+  17          // 描述: ADC初始化程序.
+  18          // 参数: ADCx: 结构参数,请参考adc.h里的定义.
+  19          // 返回: none.
+  20          // 版本: V1.0, 2012-10-22
+  21          //========================================================================
+  22          void  ADC_Inilize(ADC_InitTypeDef *ADCx)
+  23          {
+  24   1        ADCCFG = (ADCCFG & ~ADC_SPEED_2X16T) | ADCx->ADC_Speed; //设置ADC工作时钟频率
+  25   1        ADC_Justify(ADCx->ADC_AdjResult);   //AD转换结果对齐方式
+  26   1      
+  27   1        if(ADCx->ADC_SMPduty > 31)  return; //错误
+  28   1        if(ADCx->ADC_CsSetup > 1) return; //错误
+  29   1        if(ADCx->ADC_CsHold > 3)  return; //错误
+  30   1      
+  31   1        ADCTIM = (ADCx->ADC_CsSetup << 7) | (ADCx->ADC_CsHold << 5) | ADCx->ADC_SMPduty ;   //设置 ADC 内部时序，A
+             -DC采样时间建议设最大值
+  32   1      }
+  33          
+  34          
+  35          //========================================================================
+  36          // 函数: void ADC_PowerControl(u8 pwr)
+  37          // 描述: ADC电源控制程序.
+  38          // 参数: pwr: 电源控制,ENABLE或DISABLE.
+  39          // 返回: none.
+  40          // 版本: V1.0, 2012-10-22
+  41          //========================================================================
+  42          void  ADC_PowerControl(u8 pwr)
+  43          {
+  44   1        if(pwr == ENABLE) ADC_CONTR |= 0x80;
+  45   1        else        ADC_CONTR &= 0x7f;
+  46   1      }
+  47          
+  48          //========================================================================
+  49          // 函数: u16  Get_ADCResult(u8 channel)
+  50          // 描述: 查询法读一次ADC转换结果.
+  51          // 参数: channel: 选择要转换的ADC通道.
+  52          // 返回: ADC转换结果.
+  53          // 版本: V1.0, 2012-10-22
+C51 COMPILER V9.60.0.0   STC8G_H_ADC                                                       12/26/2024 07:59:47 PAGE 2   
+
+  54          //========================================================================
+  55          u16 Get_ADCResult(u8 channel) //channel = 0~15
+  56          {
+  57   1        u16 adc;
+  58   1        u8  i;
+  59   1      
+  60   1        if(channel > ADC_CH15)  return  4096; //错误,返回4096,调用的程序判断  
+  61   1        ADC_RES = 0;
+  62   1        ADC_RESL = 0;
+  63   1      
+  64   1        ADC_CONTR = (ADC_CONTR & 0xf0) | ADC_START | channel; 
+  65   1        NOP(10);      //对ADC_CONTR操作后等待会儿再访问
+  66   1      
+  67   1        for(i=0; i<250; i++)    //超时返回，正常i等于10以内就可以转换完成
+  68   1        {
+  69   2          if(ADC_CONTR & ADC_FLAG)
+  70   2          {
+  71   3            ADC_CONTR &= ~ADC_FLAG;
+  72   3            if(ADCCFG &  (1<<5))    //转换结果右对齐。 
+  73   3            {
+  74   4              adc = ((u16)ADC_RES << 8) | ADC_RESL;
+  75   4            }
+  76   3            else    //转换结果左对齐。 
+  77   3            {
+  78   4              #if ADC_RES_12BIT==1
+  79   4                adc = (u16)ADC_RES;
+  80   4                adc = (adc << 4) | ((ADC_RESL >> 4)&0x0f);
+  81   4              #else
+                        adc = (u16)ADC_RES;
+                        adc = (adc << 2) | ((ADC_RESL >> 6)&0x03);
+                      #endif
+  85   4            }
+  86   3            return  adc;
+  87   3          }
+  88   2        }
+  89   1        return  4096; //错误,返回4096,调用的程序判断
+  90   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    235    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

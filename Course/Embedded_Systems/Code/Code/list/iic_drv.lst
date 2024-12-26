@@ -1,0 +1,49 @@
+C51 COMPILER V9.60.0.0   IIC_DRV                                                           12/26/2024 08:03:57 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE IIC_DRV
+OBJECT MODULE PLACED IN .\list\iic_drv.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE Driver\iic_drv.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Config;.\Driver;.\
+                    -Device;.\Library) DEBUG PRINT(.\list\iic_drv.lst) TABS(2) OBJECT(.\list\iic_drv.obj)
+
+line level    source
+
+   1          #include "iic_drv.h"
+   2          
+   3          sbit    SDA = P0^1;
+   4          sbit    SCL = P0^0;
+   5          
+   6          #define OLED_W_SCL(x)     SCL = x;I2C_Delay();
+   7          #define OLED_W_SDA(x)     SDA = x;I2C_Delay();
+   8          
+   9          void OLED_I2C_SendByte(uint8 Byte)
+  10          {
+  11   1        uint8 i;
+  12   1        for (i = 0; i < 8; i++)
+  13   1        {
+  14   2          OLED_W_SDA(Byte & (0x80 >> i));
+  15   2          OLED_W_SCL(1);
+  16   2          OLED_W_SCL(0);
+  17   2        }
+  18   1        OLED_W_SCL(1);
+  19   1        OLED_W_SCL(0);
+  20   1      }
+  21          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     68    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
