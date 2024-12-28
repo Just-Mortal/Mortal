@@ -1,0 +1,1 @@
+"Device\oled.c" OMF2 OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Config;.\Driver;.\Device;.\Library) DEBUG PRINT(.\list\oled.lst) TABS (2) OBJECT(.\list\oled.obj)

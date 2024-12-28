@@ -1,0 +1,108 @@
+C51 COMPILER V9.60.0.0   DRIVER                                                            12/26/2024 08:03:56 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DRIVER
+OBJECT MODULE PLACED IN .\list\driver.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE Driver\driver.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Config;.\Driver;.\D
+                    -evice;.\Library) DEBUG PRINT(.\list\driver.lst) TABS(2) OBJECT(.\list\driver.obj)
+
+line level    source
+
+   1          #include "driver.h"
+   2          
+   3          void  GPIO_config(void)
+   4          {
+   5   1        P0_MODE_IO_PU(GPIO_Pin_0 | GPIO_Pin_1);   //P0.0,P0.1 设置为准双向口
+   6   1        
+   7   1        P1_MODE_IN_HIZ(GPIO_Pin_All);             //P1.0~P1.7 设置为高阻输入
+   8   1        
+   9   1        P3_MODE_IO_PU(GPIO_Pin_6 | GPIO_Pin_7);   //P3.6,P3.7 设置为准双向口
+  10   1      }
+  11          
+  12          void  Timer_config(void)
+  13          {
+  14   1        TIM_InitTypeDef   TIM_InitStructure;            //结构定义
+  15   1        TIM_InitStructure.TIM_Mode      = TIM_16BitAutoReload;  //指定工作模式,   TIM_16BitAutoReload,TIM_16Bit,T
+             -IM_8BitAutoReload,TIM_16BitAutoReloadNoMask
+  16   1        TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_1T;         //指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_
+             -CLOCK_Ext
+  17   1        TIM_InitStructure.TIM_ClkOut    = DISABLE;              //是否输出高速脉冲, ENABLE或DISABLE
+  18   1        TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / 1000UL);   //初值,
+  19   1        TIM_InitStructure.TIM_Run       = ENABLE;               //是否初始化后启动定时器, ENABLE或DISABLE
+  20   1        Timer_Inilize(Timer0,&TIM_InitStructure);               //初始化Timer0    Timer0,Timer1,Timer2,Timer3,Time
+             -r4
+  21   1        NVIC_Timer0_Init(ENABLE,Priority_0);    //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_1,
+             -Priority_2,Priority_3
+  22   1      }
+  23          
+  24          void  I2C_config(void)
+  25          {
+  26   1        I2C_InitTypeDef   I2C_InitStructure;
+  27   1      
+  28   1        I2C_InitStructure.I2C_Mode      = I2C_Mode_Slave;   //主从选择   I2C_Mode_Master, I2C_Mode_Slave
+  29   1        I2C_InitStructure.I2C_Enable    = ENABLE;           //I2C功能使能,   ENABLE, DISABLE
+  30   1        I2C_InitStructure.I2C_SL_MA     = ENABLE;           //使能从机地址比较功能,   ENABLE, DISABLE
+  31   1        I2C_InitStructure.I2C_SL_ADR    = 0x2d;             //从机设备地址,  0~127  (0x2d<<1 = 0x5a)
+  32   1        I2C_Init(&I2C_InitStructure);
+  33   1        NVIC_I2C_Init(I2C_Mode_Slave,I2C_ESTAI|I2C_ERXI|I2C_ETXI|I2C_ESTOI,Priority_0); //主从模式, I2C_Mode_Mast
+             -er, I2C_Mode_Slave; 中断使能, I2C_ESTAI/I2C_ERXI/I2C_ETXI/I2C_ESTOI/DISABLE; 优先级(低到高) Priority_0,Priority_1,Priori
+             -ty_2,Priority_3
+  34   1      
+  35   1        I2C_SW(I2C_P24_P25);          //I2C_P14_P15,I2C_P24_P25,I2C_P33_P32
+  36   1      }
+  37          
+  38          void  UART_config(void)
+  39          {
+  40   1        COMx_InitDefine   COMx_InitStructure;         //结构定义
+  41   1      
+  42   1        COMx_InitStructure.UART_Mode      = UART_8bit_BRTx; //模式, UART_ShiftRight,UART_8bit_BRTx,UART_9bit,UART
+             -_9bit_BRTx
+  43   1        COMx_InitStructure.UART_BRT_Use   = BRT_Timer1;     //选择波特率发生器, BRT_Timer1, BRT_Timer2 (注意: 串口2
+             -固定使用BRT_Timer2)
+  44   1        COMx_InitStructure.UART_BaudRate  = 115200ul;     //波特率, 一般 110 ~ 115200
+  45   1        COMx_InitStructure.UART_RxEnable  = ENABLE;       //接收允许,   ENABLE或DISABLE
+  46   1        COMx_InitStructure.BaudRateDouble = DISABLE;      //波特率加倍, ENABLE或DISABLE
+C51 COMPILER V9.60.0.0   DRIVER                                                            12/26/2024 08:03:56 PAGE 2   
+
+  47   1        UART_Configuration(UART1, &COMx_InitStructure);   //初始化串口1 UART1,UART2,UART3,UART4
+  48   1        NVIC_UART1_Init(ENABLE,Priority_1);   //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_1,Pri
+             -ority_2,Priority_3
+  49   1      
+  50   1        UART1_SW(UART1_SW_P36_P37);   //UART1_SW_P30_P31,UART1_SW_P36_P37,UART1_SW_P16_P17,UART1_SW_P43_P44
+  51   1      }
+  52          
+  53          void  ADC_config(void)
+  54          {
+  55   1        ADC_InitTypeDef   ADC_InitStructure;    //结构定义
+  56   1      
+  57   1        ADC_InitStructure.ADC_SMPduty   = 31;   //ADC 模拟信号采样时间控制, 0~31（注意： SMPDUTY 一定不能设置小于 
+             -10）
+  58   1        ADC_InitStructure.ADC_CsSetup   = 0;    //ADC 通道选择时间控制 0(默认),1
+  59   1        ADC_InitStructure.ADC_CsHold    = 1;    //ADC 通道选择保持时间控制 0,1(默认),2,3
+  60   1        ADC_InitStructure.ADC_Speed     = ADC_SPEED_2X16T;    //设置 ADC 工作时钟频率 ADC_SPEED_2X1T~ADC_SPEED_2X16
+             -T
+  61   1        ADC_InitStructure.ADC_AdjResult = ADC_RIGHT_JUSTIFIED;  //ADC结果调整,  ADC_LEFT_JUSTIFIED,ADC_RIGHT_JUSTIF
+             -IED
+  62   1        ADC_Inilize(&ADC_InitStructure);    //初始化
+  63   1        ADC_PowerControl(ENABLE);       //ADC电源开关, ENABLE或DISABLE
+  64   1        NVIC_ADC_Init(DISABLE,Priority_0);    //中断使能, ENABLE/DISABLE; 优先级(低到高) Priority_0,Priority_1,Prio
+             -rity_2,Priority_3
+  65   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    173    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      26
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

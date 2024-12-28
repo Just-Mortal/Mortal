@@ -1,0 +1,1 @@
+"Driver\driver.c" OMF2 OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Config;.\Driver;.\Device;.\Library) DEBUG PRINT(.\list\driver.lst) TABS (2) OBJECT(.\list\driver.obj)

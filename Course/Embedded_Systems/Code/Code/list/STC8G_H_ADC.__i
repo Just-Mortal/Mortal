@@ -1,1 +1,0 @@
-"Library\STC8G_H_ADC.c" OMF2 OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Config;.\Driver;.\Device;.\Library) DEBUG PRINT(.\list\STC8G_H_ADC.lst) TABS (2) OBJECT(.\list\STC8G_H_ADC.obj)
