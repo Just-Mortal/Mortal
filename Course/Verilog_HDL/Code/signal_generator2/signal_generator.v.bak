@@ -1,0 +1,9 @@
+module signal_generator(
+	input clk,
+	input reset,
+	input [1:0] switch,
+	input freq_add,
+	input freq_dec,
+	
+	output dds_clk,
+	output [7:0] wave_out)

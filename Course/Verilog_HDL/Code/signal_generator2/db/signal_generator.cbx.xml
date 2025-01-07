@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="signal_generator">
+		<CBX_INST_ENTRY INSTANCE_NAME="|signal_generator|address_calculation:address_int|read_rom:dds_rom_int|altsyncram:rom_rtl_0" CBX_FILE_NAME="altsyncram_n8e1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

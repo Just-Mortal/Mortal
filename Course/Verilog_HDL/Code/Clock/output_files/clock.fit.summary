@@ -1,0 +1,19 @@
+Fitter Status : Failed - Wed Dec 25 18:55:59 2024
+Quartus II 32-bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
+Revision Name : clock
+Top-level Entity Name : clock
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Preliminary
+Logic utilization (in ALMs) : N/A
+Total registers : 55
+Total pins : 37
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI TX Channels : 0
+Total PLLs : 0
+Total DLLs : 0

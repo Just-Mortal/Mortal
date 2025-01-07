@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\signal_generator\simulation\qsim
+vsignal_generator
+Z1 !s100 [TG17R;?X3^BYkGZNDiF53
+Z2 Ij<liGX[Kk?`o5NCE3[X]M0
+Z3 VNnoFBOiQ_R`g:cRNX8Xd12
+Z4 dE:\signal_generator\simulation\qsim
+Z5 w1734869295
+Z6 8signal_generator.vo
+Z7 Fsignal_generator.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|signal_generator.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1734869295.706000
+Z12 !s107 signal_generator.vo|
+!s101 -O0
+vsignal_generator_vlg_check_tst
+!i10b 1
+Z13 !s100 9086YoO5d`k?NoYF88`NX3
+Z14 I_O:hL2fTz]0PgW`9g`9:L3
+Z15 V`bbXFziI2]iZC9_Xb^WG_2
+R4
+Z16 w1734869293
+Z17 8Waveform1.vwf.vt
+Z18 FWaveform1.vwf.vt
+L0 65
+R8
+r1
+!s85 0
+31
+Z19 !s108 1734869295.768000
+Z20 !s107 Waveform1.vwf.vt|
+Z21 !s90 -work|work|Waveform1.vwf.vt|
+!s101 -O0
+R10
+vsignal_generator_vlg_sample_tst
+!i10b 1
+Z22 !s100 1Z<AP8gmi2UYGfHROj]zl2
+Z23 IXjJV]J;aXJ_21V@c;3d^c1
+Z24 V>9RGJ1F8C64R7J[HMSj0l2
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vsignal_generator_vlg_vec_tst
+!i10b 1
+Z25 !s100 2Th`7IFjdbFSQ<coHR=9`1
+Z26 IS4bXHhLG;KXNO[TW<]^ae3
+Z27 V9X4Q3F3Q?O>U2HDPFmc]W0
+R4
+R16
+R17
+R18
+Z28 L0 290
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10

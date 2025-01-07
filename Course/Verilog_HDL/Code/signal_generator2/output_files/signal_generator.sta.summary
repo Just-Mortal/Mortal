@@ -1,0 +1,181 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'sys_clk'
+Slack : -39.386
+TNS   : -365.040
+
+Type  : Slow 1100mV 85C Model Setup 'freq_add'
+Slack : -39.191
+TNS   : -225.671
+
+Type  : Slow 1100mV 85C Model Setup 'freq_dec'
+Slack : -35.971
+TNS   : -358.523
+
+Type  : Slow 1100mV 85C Model Hold 'freq_dec'
+Slack : -1.837
+TNS   : -11.710
+
+Type  : Slow 1100mV 85C Model Hold 'freq_add'
+Slack : -0.163
+TNS   : -0.163
+
+Type  : Slow 1100mV 85C Model Hold 'sys_clk'
+Slack : 0.385
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'freq_dec'
+Slack : -0.024
+TNS   : -0.024
+
+Type  : Slow 1100mV 85C Model Removal 'freq_dec'
+Slack : -2.641
+TNS   : -26.121
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -808.947
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'freq_dec'
+Slack : -0.394
+TNS   : -6.369
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'freq_add'
+Slack : -0.198
+TNS   : -2.930
+
+Type  : Slow 1100mV 0C Model Setup 'freq_add'
+Slack : -40.097
+TNS   : -230.964
+
+Type  : Slow 1100mV 0C Model Setup 'sys_clk'
+Slack : -39.922
+TNS   : -360.243
+
+Type  : Slow 1100mV 0C Model Setup 'freq_dec'
+Slack : -36.675
+TNS   : -365.549
+
+Type  : Slow 1100mV 0C Model Hold 'freq_dec'
+Slack : -1.970
+TNS   : -12.859
+
+Type  : Slow 1100mV 0C Model Hold 'freq_add'
+Slack : -0.125
+TNS   : -0.125
+
+Type  : Slow 1100mV 0C Model Hold 'sys_clk'
+Slack : 0.382
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'freq_dec'
+Slack : 0.288
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'freq_dec'
+Slack : -2.787
+TNS   : -27.730
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -810.649
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'freq_dec'
+Slack : -0.394
+TNS   : -5.642
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'freq_add'
+Slack : -0.263
+TNS   : -4.501
+
+Type  : Fast 1100mV 85C Model Setup 'sys_clk'
+Slack : -24.157
+TNS   : -162.979
+
+Type  : Fast 1100mV 85C Model Setup 'freq_add'
+Slack : -23.840
+TNS   : -138.246
+
+Type  : Fast 1100mV 85C Model Setup 'freq_dec'
+Slack : -21.602
+TNS   : -215.453
+
+Type  : Fast 1100mV 85C Model Hold 'freq_dec'
+Slack : -1.068
+TNS   : -6.830
+
+Type  : Fast 1100mV 85C Model Hold 'freq_add'
+Slack : -0.086
+TNS   : -0.086
+
+Type  : Fast 1100mV 85C Model Hold 'sys_clk'
+Slack : 0.207
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'freq_dec'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'freq_dec'
+Slack : -1.529
+TNS   : -15.223
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -792.371
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'freq_add'
+Slack : -0.349
+TNS   : -7.060
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'freq_dec'
+Slack : -0.314
+TNS   : -3.317
+
+Type  : Fast 1100mV 0C Model Setup 'sys_clk'
+Slack : -22.736
+TNS   : -145.697
+
+Type  : Fast 1100mV 0C Model Setup 'freq_add'
+Slack : -22.631
+TNS   : -132.303
+
+Type  : Fast 1100mV 0C Model Setup 'freq_dec'
+Slack : -20.164
+TNS   : -201.122
+
+Type  : Fast 1100mV 0C Model Hold 'freq_dec'
+Slack : -1.249
+TNS   : -9.122
+
+Type  : Fast 1100mV 0C Model Hold 'freq_add'
+Slack : -0.071
+TNS   : -0.071
+
+Type  : Fast 1100mV 0C Model Hold 'sys_clk'
+Slack : 0.198
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'freq_dec'
+Slack : 0.622
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'freq_dec'
+Slack : -1.719
+TNS   : -17.116
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -792.795
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'freq_add'
+Slack : -0.341
+TNS   : -7.029
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'freq_dec'
+Slack : -0.321
+TNS   : -3.373
+
+------------------------------------------------------------

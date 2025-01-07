@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="dds">
+		<CBX_INST_ENTRY INSTANCE_NAME="|dds|rom:dds_rom|altsyncram:rom_rtl_0" CBX_FILE_NAME="altsyncram_97c1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

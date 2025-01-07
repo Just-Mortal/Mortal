@@ -1,0 +1,19 @@
+Fitter Status : Successful - Sun Dec 22 20:05:28 2024
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
+Revision Name : signal_generator
+Top-level Entity Name : signal_generator
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Preliminary
+Logic utilization (in ALMs) : 41 / 41,910 ( < 1 % )
+Total registers : 45
+Total pins : 15 / 499 ( 3 % )
+Total virtual pins : 0
+Total block memory bits : 131,072 / 5,662,720 ( 2 % )
+Total DSP Blocks : 0 / 112 ( 0 % )
+Total HSSI RX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 9 ( 0 % )
+Total HSSI TX PCSs : 0 / 9 ( 0 % )
+Total HSSI TX Channels : 0 / 9 ( 0 % )
+Total PLLs : 0 / 15 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'sys_clk'
+Slack : -4.703
+TNS   : -161.702
+
+Type  : Slow 1100mV 85C Model Setup 'freq_switch'
+Slack : -1.083
+TNS   : -9.028
+
+Type  : Slow 1100mV 85C Model Hold 'freq_switch'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'sys_clk'
+Slack : 0.386
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -807.725
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'freq_switch'
+Slack : -0.394
+TNS   : -5.844
+
+Type  : Slow 1100mV 0C Model Setup 'sys_clk'
+Slack : -4.489
+TNS   : -152.757
+
+Type  : Slow 1100mV 0C Model Setup 'freq_switch'
+Slack : -1.104
+TNS   : -9.231
+
+Type  : Slow 1100mV 0C Model Hold 'freq_switch'
+Slack : 0.361
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'sys_clk'
+Slack : 0.383
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -809.168
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'freq_switch'
+Slack : -0.394
+TNS   : -6.120
+
+Type  : Fast 1100mV 85C Model Setup 'sys_clk'
+Slack : -2.748
+TNS   : -39.240
+
+Type  : Fast 1100mV 85C Model Setup 'freq_switch'
+Slack : -0.052
+TNS   : -0.103
+
+Type  : Fast 1100mV 85C Model Hold 'freq_switch'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'sys_clk'
+Slack : 0.210
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -792.397
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'freq_switch'
+Slack : -0.297
+TNS   : -3.420
+
+Type  : Fast 1100mV 0C Model Setup 'sys_clk'
+Slack : -2.651
+TNS   : -30.187
+
+Type  : Fast 1100mV 0C Model Setup 'freq_switch'
+Slack : 0.007
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'freq_switch'
+Slack : 0.175
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'sys_clk'
+Slack : 0.199
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sys_clk'
+Slack : -2.174
+TNS   : -792.811
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'freq_switch'
+Slack : -0.306
+TNS   : -3.536
+
+------------------------------------------------------------

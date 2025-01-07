@@ -1,0 +1,58 @@
+module key_detection(
+	input clk,
+	input reset,
+	input [1:0] switch,
+	input freq_add,
+	input freq_dec,
+	
+	output vga_clk,
+	output [7:0] wave_out)
+	
+	assign vga_clk = clk;
+	reg [11:0] freq_word;
+	reg [11:0] phase_word;
+	initial begin
+		freq_word=12'd8;
+	end
+	 
+	wire [13:0] rom_address_switch;
+	reg [11:0] freq_word_reg;
+	reg [11:0] phase_word_reg;
+	reg [11:0] phase_adder;//相位累加器
+	reg [11:0] rom_address;//存储深度2^10
+	
+	// 任务一
+	always @(posedge clk or negedge reset) begin
+		if (reset ==1'b0) begin
+			freq_word_reg	<= 12'h000;		// 频率复位
+			phase_word_reg <= 12'h000;		// 相位复位
+			phase_adder		<= 12'h000;		//	
+			rom_address		<= 12'd0;
+		end
+		else begin
+			freq_word_reg	<= freq_word;	//	
+			phase_word_reg <= phase_word;	//	
+			phase_adder		<= phase_adder + freq_word_reg;
+			rom_address <= phase_adder + phase_word_reg; 
+		end
+	end
+
+	// 任务二
+	always @(negedge freq_add or negedge reset)begin
+		if(reset == 0)begin
+			freq_word = 12'd8;
+		end
+		else begin
+			freq_word <= freq_word + 12'd4;
+		end
+	end
+
+	assign rom_address_switch = {switch,rom_address};
+
+	read_rom dds_rom(
+	.clk(sys_clk),
+	.addr(rom_address_switch),
+	.q(wave_out)
+	);
+ 
+endmodule

@@ -1,0 +1,418 @@
+Analysis & Synthesis report for timer
+Tue Dec 24 14:52:07 2024
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
+ 13. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Dec 24 14:52:07 2024       ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
+; Revision Name                      ; timer                                       ;
+; Top-level Entity Name              ; timer                                       ;
+; Family                             ; Cyclone IV GX                               ;
+; Total logic elements               ; 148                                         ;
+;     Total combinational functions  ; 148                                         ;
+;     Dedicated logic registers      ; 55                                          ;
+; Total registers                    ; 55                                          ;
+; Total pins                         ; 37                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total GXB Receiver Channel PCS     ; 0                                           ;
+; Total GXB Receiver Channel PMA     ; 0                                           ;
+; Total GXB Transmitter Channel PCS  ; 0                                           ;
+; Total GXB Transmitter Channel PMA  ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; timer              ; timer              ;
+; Family name                                                                ; Cyclone IV GX      ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                     ;
++----------------------------------+-----------------+------------------------+------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path       ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------+---------+
+; timer.v                          ; yes             ; User Verilog HDL File  ; F:/Project/Verilog/timer/timer.v   ;         ;
+; count.v                          ; yes             ; User Verilog HDL File  ; F:/Project/Verilog/timer/count.v   ;         ;
+; count60.v                        ; yes             ; User Verilog HDL File  ; F:/Project/Verilog/timer/count60.v ;         ;
+; show.v                           ; yes             ; User Verilog HDL File  ; F:/Project/Verilog/timer/show.v    ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------+---------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++--------------------------+------------------+
+; Resource                 ; Usage            ;
++--------------------------+------------------+
+; I/O pins                 ; 37               ;
+; DSP block 9-bit elements ; 0                ;
+; Maximum fan-out node     ; clk~input        ;
+; Maximum fan-out          ; 33               ;
+; Total fan-out            ; 681              ;
+; Average fan-out          ; 2.46             ;
++--------------------------+------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name     ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-------------------------+--------------+
+; |timer                     ; 148 (4)           ; 55 (4)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 37   ; 0            ; |timer                  ; work         ;
+;    |count60:min2hour|      ; 12 (12)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|count60:min2hour ; work         ;
+;    |count60:sec2min|       ; 12 (12)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|count60:sec2min  ; work         ;
+;    |count:sec_count|       ; 45 (45)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|count:sec_count  ; work         ;
+;    |show:show_hour|        ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|show:show_hour   ; work         ;
+;    |show:show_min_h|       ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|show:show_min_h  ; work         ;
+;    |show:show_min_l|       ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|show:show_min_l  ; work         ;
+;    |show:show_sec_h|       ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|show:show_sec_h  ; work         ;
+;    |show:show_sec_l|       ; 15 (15)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |timer|show:show_sec_l  ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                 ;
++-----------------------------------------------------+----------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal  ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------+------------------------+
+; show:show_sec_l|decodeout[0]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[1]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[2]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[3]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[4]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[5]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_l|decodeout[6]                        ; show:show_sec_l|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[0]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[1]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[2]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[3]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[4]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[5]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_sec_h|decodeout[6]                        ; show:show_sec_h|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[0]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[1]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[2]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[3]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[4]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[5]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_l|decodeout[6]                        ; show:show_min_l|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[0]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[1]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[2]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[3]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[4]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[5]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_min_h|decodeout[6]                        ; show:show_min_h|Mux7 ; yes                    ;
+; show:show_hour|decodeout[0]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[1]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[2]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[3]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[4]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[5]                         ; show:show_hour|Mux7  ; yes                    ;
+; show:show_hour|decodeout[6]                         ; show:show_hour|Mux7  ; yes                    ;
+; Number of user-specified and inferred latches = 35  ;                      ;                        ;
++-----------------------------------------------------+----------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 55    ;
+; Number of registers using Synchronous Clear  ; 34    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 16    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 8     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |timer|count:sec_count|cnt[4] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+    Info: Processing started: Tue Dec 24 14:52:05 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off timer -c timer
+Info (11104): Parallel Compilation has detected 16 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 12 of the 12 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file timer.v
+    Info (12023): Found entity 1: timer
+Info (12021): Found 1 design units, including 1 entities, in source file count.v
+    Info (12023): Found entity 1: count
+Info (12021): Found 1 design units, including 1 entities, in source file count60.v
+    Info (12023): Found entity 1: count60
+Info (12021): Found 1 design units, including 1 entities, in source file show.v
+    Info (12023): Found entity 1: show
+Info (12127): Elaborating entity "timer" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at timer.v(19): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "count" for hierarchy "count:sec_count"
+Info (12128): Elaborating entity "count60" for hierarchy "count60:sec2min"
+Warning (10230): Verilog HDL assignment warning at count60.v(21): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at count60.v(24): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at count60.v(26): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "show" for hierarchy "show:show_sec_l"
+Warning (10270): Verilog HDL Case Statement warning at show.v(9): incomplete case statement has no default case item
+Warning (10240): Verilog HDL Always Construct warning at show.v(7): inferring latch(es) for variable "decodeout", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "decodeout[0]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[1]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[2]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[3]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[4]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[5]" at show.v(7)
+Info (10041): Inferred latch for "decodeout[6]" at show.v(7)
+Warning (13012): Latch show:show_sec_l|decodeout[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[1]
+Warning (13012): Latch show:show_sec_l|decodeout[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[2]
+Warning (13012): Latch show:show_sec_l|decodeout[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[2]
+Warning (13012): Latch show:show_sec_l|decodeout[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[1]
+Warning (13012): Latch show:show_sec_l|decodeout[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[2]
+Warning (13012): Latch show:show_sec_l|decodeout[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[1]
+Warning (13012): Latch show:show_sec_l|decodeout[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[1]
+Warning (13012): Latch show:show_sec_h|decodeout[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[5]
+Warning (13012): Latch show:show_sec_h|decodeout[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[6]
+Warning (13012): Latch show:show_sec_h|decodeout[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[6]
+Warning (13012): Latch show:show_sec_h|decodeout[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[5]
+Warning (13012): Latch show:show_sec_h|decodeout[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[6]
+Warning (13012): Latch show:show_sec_h|decodeout[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[5]
+Warning (13012): Latch show:show_sec_h|decodeout[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:sec2min|qout[5]
+Warning (13012): Latch show:show_min_l|decodeout[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[1]
+Warning (13012): Latch show:show_min_l|decodeout[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[2]
+Warning (13012): Latch show:show_min_l|decodeout[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[2]
+Warning (13012): Latch show:show_min_l|decodeout[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[1]
+Warning (13012): Latch show:show_min_l|decodeout[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[2]
+Warning (13012): Latch show:show_min_l|decodeout[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[1]
+Warning (13012): Latch show:show_min_l|decodeout[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[1]
+Warning (13012): Latch show:show_min_h|decodeout[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[5]
+Warning (13012): Latch show:show_min_h|decodeout[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[6]
+Warning (13012): Latch show:show_min_h|decodeout[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[6]
+Warning (13012): Latch show:show_min_h|decodeout[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[5]
+Warning (13012): Latch show:show_min_h|decodeout[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[6]
+Warning (13012): Latch show:show_min_h|decodeout[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[5]
+Warning (13012): Latch show:show_min_h|decodeout[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal count60:min2hour|qout[5]
+Warning (13012): Latch show:show_hour|decodeout[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Warning (13012): Latch show:show_hour|decodeout[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[2]
+Warning (13012): Latch show:show_hour|decodeout[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Warning (13012): Latch show:show_hour|decodeout[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Warning (13012): Latch show:show_hour|decodeout[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Warning (13012): Latch show:show_hour|decodeout[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Warning (13012): Latch show:show_hour|decodeout[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal hour[1]
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file F:/Project/Verilog/timer/output_files/timer.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 185 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 35 output pins
+    Info (21061): Implemented 148 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 76 warnings
+    Info: Peak virtual memory: 4726 megabytes
+    Info: Processing ended: Tue Dec 24 14:52:07 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in F:/Project/Verilog/timer/output_files/timer.map.smsg.
+
+
